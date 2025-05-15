@@ -1,9 +1,9 @@
-from check_df import Ex
-import pandas as pd
+from checking import DatasetProcessor
 
 
 def main():
-    Ex.check()
+    processor = DatasetProcessor('test.csv')
+    processor.process()
 
 
 if __name__ == "__main__":
