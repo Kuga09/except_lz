@@ -22,6 +22,19 @@ class DatasetProcessor:
             'Cash-back',
             'Сумма cash-back'
         ]
+        self.expected_dtypes = {
+            'Участники гражданского оборота': 'object',
+            'Тип операции': 'object',
+            'Сумма операции': 'float',
+            'Вид расчета': 'object',
+            'Место оплаты': 'object',
+            'Терминал оплаты': 'object',
+            'Дата оплаты': 'object',  
+            'Время оплаты': 'object',
+            'Результат операции': 'object',
+            'Cash-back': 'object',
+            'Сумма cash-back': 'float'
+        }
     
     # Функция, проверяющая файл
     def process(self):
@@ -42,6 +55,18 @@ class DatasetProcessor:
                     f"Структура не соответствует. Ожидаемые столбцы: {self.expected_columns}, "
                     f"найдено: {list(df.columns)}"
                 )
+            
+            # Проверка типов данных
+            mismatched_types = []
+            for col, expected_type in self.expected_dtypes.items():
+                actual_type = str(df[col].dtype)
+                if actual_type != expected_type:
+                    mismatched_types.append((col, expected_type, actual_type))
+
+            if mismatched_types:
+                error_msgs = [f"Столбец '{col}': ожидался тип {exp}, найден {act}"
+                              for col, exp, act in mismatched_types]
+                raise TypeError("Несоответствие типов данных:\n" + "\n".join(error_msgs))
 
             print("Файл успешно обработан.")
             return df
