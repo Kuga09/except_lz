@@ -25,7 +25,7 @@ class DatasetProcessor:
         self.expected_dtypes = {
             'Участники гражданского оборота': 'object',
             'Тип операции': 'object',
-            'Сумма операции': 'float',
+            'Сумма операции': 'float64',
             'Вид расчета': 'object',
             'Место оплаты': 'object',
             'Терминал оплаты': 'object',
@@ -33,7 +33,7 @@ class DatasetProcessor:
             'Время оплаты': 'object',
             'Результат операции': 'object',
             'Cash-back': 'object',
-            'Сумма cash-back': 'float'
+            'Сумма cash-back': 'float64'
         }
     
     # Функция, проверяющая файл

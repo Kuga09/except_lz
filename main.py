@@ -4,7 +4,7 @@ from checking import DatasetProcessor
 
 # Функция main
 def main():
-    processor = DatasetProcessor('var1.csv')
+    processor = DatasetProcessor('test.csv')
     processor.process()
 
 
