@@ -2,7 +2,7 @@ from checking import DatasetProcessor
 
 
 def main():
-    processor = DatasetProcessor('test.csv')
+    processor = DatasetProcessor('var1.csv')
     processor.process()
 
 
